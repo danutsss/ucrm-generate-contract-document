@@ -1,0 +1,28 @@
+{
+	"name": "danutsss/generate-contract-document",
+	"description": "This plugin calls the API and help us generate a contract document for client.",
+	"authors": [
+		{
+			"name": "Matei Nicolae - Daniel",
+			"email": "matei1337@icloud.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"App\\": [
+				"classes/"
+			]
+		}
+	},
+	"require": {
+		"php": ">=7.1",
+		"ubnt/ucrm-plugin-sdk": "~0.4",
+		"vlucas/phpdotenv": "^5.5",
+		"dompdf/dompdf": "^2.0"
+	},
+	"config": {
+		"platform": {
+			"php": "7.3"
+		}
+	}
+}
