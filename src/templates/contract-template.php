@@ -324,7 +324,7 @@ foreach ($customAttributes as $customAttribute) {
                                 $service['servicePlanId'] == 25 ||
                                 $service['servicePlanId'] == 32
                             ) : ?>
-                                <center>
+                                <p style="text-align: center;">
                                     <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna</strong>
                                     <br>
                                     Viteza de 1000Mbps
@@ -337,11 +337,12 @@ foreach ($customAttributes as $customAttribute) {
                                     personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
                                     instalare in maxim 5 zile lucratoare
                                     <br />
-                                </center>
+                                    <br />
+                                </p>
                             <?php endif; ?>
 
                             <?php if ($service['servicePlanId'] == 13) : ?>
-                                <center>
+                                <p style="text-align: center;">
                                     <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna </strong>
                                     <br>
                                     220 canale digitale / 50+ canale HD
@@ -352,12 +353,13 @@ foreach ($customAttributes as $customAttribute) {
                                     <br>
                                     Conectare gratuita
                                     <br />
-                                </center>
+                                    <br />
+                                </p>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                        <center>
+                        <p style="text-align: center;">
                             Taxa suspendare - 125RON | Taxa reactivare - 125RON | Taxa conectare - 250RON
-                        </center>
+                        </p>
                     </td>
                 </tr>
             </tbody>
@@ -374,7 +376,7 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <center>Perioada contractuala este de <strong>minim 12 de luni</strong></center>
+                        <p style="text-align: center;">Perioada contractuala este de <strong>minim 12 de luni</strong></center>
                     </td>
                 </tr>
             </tbody>
