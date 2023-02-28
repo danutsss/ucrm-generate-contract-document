@@ -126,6 +126,12 @@ foreach ($customAttributes as $customAttribute) {
         .table-padding {
             padding: 0cm 5.4pt 0cm 5.4pt;
         }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+        }
     </style>
 </head>
 
@@ -268,50 +274,54 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <?php if ($services) : ?>
-                            <?php foreach ($services as $service) : ?>
-                                <?php
-                                // Formatting dates into DD-MM-YYYY
-                                if ($service['activeFrom']) {
-                                    $service['activeFrom'] = new \DateTimeImmutable($service['activeFrom']);
-                                    $service['activeFrom'] = $service['activeFrom']->format('d-m-Y');
-                                }
+                        <div class="grid">
+                            <?php if ($services) : ?>
+                                <?php foreach ($services as $service) : ?>
+                                    <?php
+                                    // Formatting dates into DD-MM-YYYY
+                                    if ($service['activeFrom']) {
+                                        $service['activeFrom'] = new \DateTimeImmutable($service['activeFrom']);
+                                        $service['activeFrom'] = $service['activeFrom']->format('d-m-Y');
+                                    }
 
-                                if ($service['activeTo']) {
-                                    $service['activeTo'] = new \DateTimeImmutable($service['activeTo']);
-                                    $service['activeTo'] = $service['activeTo']->format('d-m-Y');
-                                }
-                                ?>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            <strong>Denumire:&nbsp;</strong> <?= $service['name'] ?>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>Pret:&nbsp;</strong> <?= $service['price'] ?> RON
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>Activat la:&nbsp;</strong> <?= $service['activeFrom'] ?>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>Viteze:&nbsp;</strong><?= $service['downloadSpeed'] ?> Mbps (download) / <?= $service['uploadSpeed'] ?> Mbps (upload)
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>Adresa:&nbsp;</strong> <?= $service['street1'] . " " . $service['street2'] ?>
-                                            <strong>oras:&nbsp;</strong> <?= $service['city'] . " " . $service['zipCode'] ?>
-                                        </p>
-                                    </li>
-                                </ul>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                                    if ($service['activeTo']) {
+                                        $service['activeTo'] = new \DateTimeImmutable($service['activeTo']);
+                                        $service['activeTo'] = $service['activeTo']->format('d-m-Y');
+                                    }
+                                    ?>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <p>
+                                                    <strong>Denumire:&nbsp;</strong> <?= $service['name'] ?>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Pret:&nbsp;</strong> <?= $service['price'] ?> RON
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Activat la:&nbsp;</strong> <?= $service['activeFrom'] ?>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Viteze:&nbsp;</strong><?= $service['downloadSpeed'] ?> Mbps (download) / <?= $service['uploadSpeed'] ?> Mbps (upload)
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Adresa:&nbsp;</strong> <?= $service['street1'] . " " . $service['street2'] ?>
+                                                    <strong>oras:&nbsp;</strong> <?= $service['city'] . " " . $service['zipCode'] ?>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -329,7 +339,6 @@ foreach ($customAttributes as $customAttribute) {
                 <tr>
                     <td colspan="3">
                         <?php foreach ($services as $service) : ?>
-
                             <?php if (
                                 $service['servicePlanId'] == 1 ||
                                 $service['servicePlanId'] == 4 ||
