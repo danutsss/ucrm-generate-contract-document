@@ -13,14 +13,6 @@ $customApi = new CustomApi();
 foreach ($services as $service) {
     $serviceId = $service['id'];
     $service = $customApi::doRequest("clients/services/$serviceId") ?: [];
-
-    $serviceSurcharge = $customApi::doRequest("clients/services/{$service['id']}/service-surcharges") ?: [];
-    $surchargeById = [];
-    // $surchargePrice = [];
-    foreach ($serviceSurcharge as $surcharge) :
-        $surchargeById[$surcharge['surchargeId']] = $surcharge['invoiceLabel'];
-        $surchargePrice[$surcharge['surchargeId']] = $surcharge['price'];
-    endforeach;
 }
 
 // Parse the client's custom attributes to an ID <=> value pairs:
@@ -322,9 +314,18 @@ foreach ($customAttributes as $customAttribute) {
                     <td colspan="3">
                         <?php foreach ($services as $service) : ?>
 
-                            <?php if ($service['servicePlanId'] == 6) : ?>
+                            <?php if (
+                                $service['servicePlanId'] == 1 ||
+                                $service['servicePlanId'] == 4 ||
+                                $service['servicePlanId'] == 6 ||
+                                $service['servicePlanId'] == 7 ||
+                                $service['servicePlanId'] == 23 ||
+                                $service['servicePlanId'] == 24 ||
+                                $service['servicePlanId'] == 25 ||
+                                $service['servicePlanId'] == 32
+                            ) : ?>
                                 <center>
-                                    <strong>Internet Extra - 50RON / luna</strong>
+                                    <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna</strong>
                                     <br>
                                     Viteza de 1000Mbps
                                     <br>
@@ -335,32 +336,13 @@ foreach ($customAttributes as $customAttribute) {
                                     Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
                                     personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
                                     instalare in maxim 5 zile lucratoare
-                                    <br>
-                                    <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                    <br><br>
-                                </center>
-                            <?php endif; ?>
-
-                            <?php if ($service['servicePlanId'] == 1) : ?>
-                                <center>
-                                    <strong> Internet Standard - 25RON / luna </strong>
-                                    <br>
-                                    Viteza de 1000Mbps
-                                    <br>
-                                    Necesita achizitia unui router WIFI.
-                                    <br>
-                                    Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
-                                    personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
-                                    instalare in maxim 5 zile lucratoare
-                                    <br>
-                                    <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                    <br><br>
+                                    <br />
                                 </center>
                             <?php endif; ?>
 
                             <?php if ($service['servicePlanId'] == 13) : ?>
                                 <center>
-                                    <strong>Televiziune extra - 75RON / luna </strong>
+                                    <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna </strong>
                                     <br>
                                     220 canale digitale / 50+ canale HD
                                     <br>
@@ -369,30 +351,7 @@ foreach ($customAttributes as $customAttribute) {
                                     OFERTA - 53.3% OFF - 35RON / luna
                                     <br>
                                     Conectare gratuita
-                                    <br>
-                                    <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                    <br><br>
-                                </center>
-                            <?php endif; ?>
-
-                            <?php if ($service['servicePlanId'] == 4) : ?>
-                                <center>
-                                    <strong> Pachet Internet Extra + TV 1 an - 125RON / luna </strong>
-                                    <br>
-                                    Internet Extra - 50RON | Televiziune Extra - 75RON
-                                    <br>
-                                    OFERTA - 40% OFF - 75RON / luna
-                                    <br>
-                                    Router WiFi in custodie pe durata contractului
-                                    <br>
-                                    Conectare gratuita
-                                    <br>
-                                    <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                    <br>
-                                    3 luni gratuite <b>pe an</b>.
-                                    <br>
-                                    Reducere pentru plata anticipata si integrala: 25% (9 luni + 3 gratuite).
-                                    <br><br>
+                                    <br />
                                 </center>
                             <?php endif; ?>
                         <?php endforeach; ?>
@@ -415,7 +374,7 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <center>Perioada contractuala este de <strong>minim 24 de luni</strong></center>
+                        <center>Perioada contractuala este de <strong>minim 12 de luni</strong></center>
                     </td>
                 </tr>
             </tbody>
