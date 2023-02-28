@@ -40,7 +40,7 @@ if (array_key_exists('generate', $_GET)) {
 
             $client = $api::doRequest("clients/$clientId") ?: [];
             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
-            $services = $api::doRequest("clients/services?clientId=$clientId") ?: [];
+            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
             $templatePath = __DIR__ . "/templates/contract-template.php";
             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
