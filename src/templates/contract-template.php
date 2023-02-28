@@ -110,6 +110,22 @@ foreach ($customAttributes as $customAttribute) {
             width: 20px;
             text-align: center;
         }
+
+        .center {
+            text-align: center;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .table-border {
+            border: solid black 1.0pt;
+        }
+
+        .table-padding {
+            padding: 0cm 5.4pt 0cm 5.4pt;
+        }
     </style>
 </head>
 
@@ -118,7 +134,7 @@ foreach ($customAttributes as $customAttribute) {
         <table>
             <tbody>
                 <tr>
-                    <td class="header__heading" style="text-align: center;">
+                    <td class="header__heading" class="center">
                         <h1>URBAN NETWORK SOLUTIONS S.R.L</h1>
                         <a href="https://07internet.ro">07INTERNET.RO</a>
                         <br>
@@ -147,7 +163,7 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p style="text-align: center;">
+                        <p class="center">
                             URBAN NETWORK SOLUTIONS S.R.L, cu sediul in <strong>Navodari, str. Midiei nr. 6, jud. Constanta</strong>, J13/1022/2017,
                             <strong>CUI:</strong> 37374276, Unicredit Navodari, <strong>CONT:</strong> RO70 BACX 0000 0014 5390 8001, reprezentata de
                             <strong>Lazar Stefan</strong> in calitate de <strong>director general</strong>.
@@ -324,7 +340,7 @@ foreach ($customAttributes as $customAttribute) {
                                 $service['servicePlanId'] == 25 ||
                                 $service['servicePlanId'] == 32
                             ) : ?>
-                                <p style="text-align: center;">
+                                <p class="center">
                                     <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna</strong>
                                     <br>
                                     Viteza de 1000Mbps
@@ -342,7 +358,7 @@ foreach ($customAttributes as $customAttribute) {
                             <?php endif; ?>
 
                             <?php if ($service['servicePlanId'] == 13) : ?>
-                                <p style="text-align: center;">
+                                <p class="center">
                                     <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna </strong>
                                     <br>
                                     220 canale digitale / 50+ canale HD
@@ -357,7 +373,7 @@ foreach ($customAttributes as $customAttribute) {
                                 </p>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                        <p style="text-align: center;">
+                        <p class="center">
                             Taxa suspendare - 125RON | Taxa reactivare - 125RON | Taxa conectare - 250RON
                         </p>
                     </td>
@@ -376,7 +392,7 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p style="text-align: center;">Perioada contractuala este de <strong>minim 12 de luni</strong></center>
+                        <p class="center">Perioada contractuala este de <strong>minim 12 de luni</strong></center>
                     </td>
                 </tr>
             </tbody>
@@ -909,8 +925,8 @@ foreach ($customAttributes as $customAttribute) {
             reprezentand contravaloarea serviciilor furnizate pana la data incetarii contractului, precum si o taxa de instalare.
         </p>
         <h1>CONDITII GENERALE DE FURNIZARE A SERVICIILOR URBAN ("CONDITII GENERALE") - ANEXA A.1</h1>
-        <h3 style="text-align: center;">LA CONTRACTUL NR.:&nbsp; <?= $client['id'] ?></h3>
-        <h3 style="text-align: center;">PREVEDERI SPECIFICE SERVICIULUI DE INTERNET SI TELEVIZIUNE</h3>
+        <h3 class="center">LA CONTRACTUL NR.:&nbsp; <?= $client['id'] ?></h3>
+        <h3 class="center">PREVEDERI SPECIFICE SERVICIULUI DE INTERNET SI TELEVIZIUNE</h3>
         <h3>1. Definitii - in cazul in care legea nu prevede altfel, termenii folositi vor avea urmatoarele defintii: </h3>
         <p>
             (1) &nbsp;<strong>Adresa IP:&nbsp;</strong>identificator unic pentru un calculator personal sau pentru un echipament intr-o retea TCP / IP;
@@ -1002,7 +1018,7 @@ foreach ($customAttributes as $customAttribute) {
         <br>
         <h1>ANEXA C.1 - PROCES VERBAL DE ACCEPTANTA SI PUNERE IN FUNCTIUNE</h1>
         <h1>ANEXA C.2 - PROCES VERBAL DE PREDARE - PRIMIRE CUSTODIE ECHIPAMENTE</h1>
-        <h5 class="header__phone" style="font-weight: bold;">CTR NR.:&nbsp; <?= $client['id'] ?></h5>
+        <h5 class="header__phone" class="fw-bold">CTR NR.:&nbsp; <?= $client['id'] ?></h5>
         <p>
             ART. 1. - URBAN NETWORK SOLUTIONS S.R.L, cu sediul in&nbsp;<strong>Navodari, str. Midiei nr. 6, jud. Constanta</strong>, J13/1022/2017,
             <strong>CUI:</strong> 37374276, Unicredit Navodari, <strong>CONT:</strong> RO70 BACX 0000 0014 5390 8001, reprezentata de
@@ -1011,70 +1027,70 @@ foreach ($customAttributes as $customAttribute) {
         <table>
             <tbody>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>NR. CRT</p>
                     </td>
-                    <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 261.0pt;" class="table-border table-padding">
                         <p>Denumire echipament</p>
                     </td>
-                    <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 81.0pt;" class="table-border table-padding">
                         <p>Seria</p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p>U.M.</p>
                     </td>
-                    <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 53.6pt;" class="table-border table-padding">
                         <p>Cantitate</p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>1</p>
                     </td>
-                    <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 261.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 81.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 53.6pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>2</p>
                     </td>
-                    <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 261.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 81.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 53.6pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>3</p>
                     </td>
-                    <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 261.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 81.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 53.6pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
@@ -1089,56 +1105,56 @@ foreach ($customAttributes as $customAttribute) {
         <table>
             <tbody>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>NR. CRT</p>
                     </td>
-                    <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 396.0pt;" class="table-border table-padding">
                         <p>Serviciu</p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p>U.M.</p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>1</p>
                     </td>
-                    <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 396.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>2</p>
                     </td>
-                    <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 396.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 45.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 45.0pt;" class="table-border table-padding">
                         <p>3</p>
                     </td>
-                    <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 396.0pt;" class="table-border table-padding">
                         <p></p>
                     </td>
-                    <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
+                    <td style="width: 60.3pt;" class="table-border table-padding">
                         <p></p>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <p style="text-align: center;">
+        <p class="center">
             <strong>Suport Tehnic:&nbsp;</strong> - 0241 700 000 intre orele 08:00 - 20:00, 07INTERNET - NONSTOP, E-MAIL - &nbsp;<strong>client@07internet.ro:&nbsp;</strong> - NONSTOP.
         </p>
-        <h3 style="text-align: center;">URBAN NETWORK SOLUTIONS S.R.L.</h3>
-        <h3 style="text-align: center;">ANEXA C.3 la Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['id'] ?>&nbsp;</strong>.</h3>
+        <h3 class="center">URBAN NETWORK SOLUTIONS S.R.L.</h3>
+        <h3 class="center">ANEXA C.3 la Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['id'] ?>&nbsp;</strong>.</h3>
         <h1>Informare cu privire la prelucrarea datelor cu caracter personal</h1>
         <p>
             Prelucram date cu caracter personal atunci cand folositi serviciile 07INTERNET, iar modul in care facem acestlucru este prevazut in aceasta Informare.
@@ -1505,8 +1521,8 @@ foreach ($customAttributes as $customAttribute) {
 
         <br />
 
-        <h3 style="text-align: center;">Informatii privind exercitarea dreptului de retragere</h3>
-        <h3 style="font-weight: bold;">Dreptul de retragere</h3>
+        <h3 class="center">Informatii privind exercitarea dreptului de retragere</h3>
+        <h3 class="fw-bold">Dreptul de retragere</h3>
         <p>
             Aveti dreptul de a va retrage din prezentul contract, fara a preciza motivele, in termen de 14 zile. Perioada de
             retragere expira după 14 zile începând de la ziua incheierii contractului.
@@ -1525,14 +1541,14 @@ foreach ($customAttributes as $customAttribute) {
 
         <br />
 
-        <h3 style="font-weight: bold;">Consecinte retragerii</h3>
+        <h3 class="fw-bold">Consecinte retragerii</h3>
         <p>
             Daca ati solicitat inceperea prestarii serviciului de furnizare in perioada de retragere, ne datorati o suma
             reprezentand contravaloarea serviciilor furnizate pana la data incetarii contractului.
         </p>
 
-        <h1 style="text-align: center;">Formular de retragere</h1>
-        <p style="font-size: 10px; text-align: center;">conform OUG nr. 34/2014 privind drepturile consumatorilor
+        <h1 class="center">Formular de retragere</h1>
+        <p style="font-size: 10px;" class="center">conform OUG nr. 34/2014 privind drepturile consumatorilor
             <sup>1)</sup> in cadrul contractelor incheiate cu profesionistii, precum si pentru modificarea si completarea unor acte normative
         </p>
 
@@ -1560,7 +1576,7 @@ foreach ($customAttributes as $customAttribute) {
 
         <br />
 
-        <h3 style="font-weight: bold;">Consumator:</h3>
+        <h3 class="fw-bold">Consumator:</h3>
         <p>
             <strong>Nume prenume:&nbsp;</strong> _____________________________ <br />
             <strong>Act de identitate:&nbsp;</strong> _____________________________ <br />
