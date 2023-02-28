@@ -218,17 +218,17 @@ foreach ($customAttributes as $customAttribute) {
                     </td>
                     <td>
                         <p>
-                            <strong>Serie C.I.:&nbsp;</strong> <?= $customAttributeValueById[20] ?>
-                            <strong>Numar C.I.:&nbsp;</strong> <?= $customAttributeValueById[21] ?> <br>
-                            <strong>Cod Numeric Personal:&nbsp;</strong> <?= $customAttributeValueById[22] ?> <br>
+                            <strong>Serie C.I.:&nbsp;</strong> <?= $customAttributeValueById[1] ?>
+                            <strong>Numar C.I.:&nbsp;</strong> <?= $customAttributeValueById[2] ?> <br>
+                            <strong>Cod Numeric Personal:&nbsp;</strong> <?= $customAttributeValueById[4] ?> <br>
                             <strong>Cod fiscal:&nbsp;</strong><?= $client['companyTaxId'] ?><br>
                             <strong>Nr. reg. comert:&nbsp;</strong><?= $client['companyRegistrationNumber'] ?>
                         </p>
                     </td>
                     <td>
                         <p>
-                            <strong>Emis de:&nbsp;</strong> <?= $customAttributeValueById[23] ?>
-                            <strong>la data de:&nbsp;</strong> <?= $customAttributeValueById[24] ?>
+                            <strong>Emis de:&nbsp;</strong> SPCLEP <?= $client['city'] ?>
+                            <strong>la data de:&nbsp;</strong> <?= $customAttributeValueById[5] ?>
                         </p>
                     </td>
                 </tr>
@@ -327,7 +327,7 @@ foreach ($customAttributes as $customAttribute) {
                         <?php if ($services) : ?>
                             <?php foreach ($services as $service) : ?>
 
-                                <?php if ($service['servicePlanId'] == 1) : ?>
+                                <?php if ($service['servicePlanId'] == 6) : ?>
                                     <center>
                                         <strong>Internet Extra - 50RON / luna</strong>
                                         <br>
@@ -341,12 +341,12 @@ foreach ($customAttributes as $customAttribute) {
                                         personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
                                         instalare in maxim 5 zile lucratoare
                                         <br>
-                                        <strong> <? $surchargeById[1] ?> - <?= $surchargePrice[1] ?> RON / luna</strong>
+                                        <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
                                         <br><br>
                                     </center>
                                 <?php endif; ?>
 
-                                <?php if ($service['servicePlanId'] == 2) : ?>
+                                <?php if ($service['servicePlanId'] == 1) : ?>
                                     <center>
                                         <strong> Internet Standard - 25RON / luna </strong>
                                         <br>
@@ -358,12 +358,12 @@ foreach ($customAttributes as $customAttribute) {
                                         personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
                                         instalare in maxim 5 zile lucratoare
                                         <br>
-                                        <strong> <? $surchargeById[1] ?> - <?= $surchargePrice[1] ?> RON / luna</strong>
+                                        <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
                                         <br><br>
                                     </center>
                                 <?php endif; ?>
 
-                                <?php if ($service['servicePlanId'] == 3) : ?>
+                                <?php if ($service['servicePlanId'] == 13) : ?>
                                     <center>
                                         <strong>Televiziune extra - 75RON / luna </strong>
                                         <br>
@@ -382,7 +382,7 @@ foreach ($customAttributes as $customAttribute) {
 
                                 <?php if ($service['servicePlanId'] == 4) : ?>
                                     <center>
-                                        <strong> Pachet Internet Extra + TV 1 an - 75RON / luna </strong>
+                                        <strong> Pachet Internet Extra + TV 1 an - 125RON / luna </strong>
                                         <br>
                                         Internet Extra - 50RON | Televiziune Extra - 75RON
                                         <br>
@@ -1077,16 +1077,16 @@ foreach ($customAttributes as $customAttribute) {
                         <p>1</p>
                     </td>
                     <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[26] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[29] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[32] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[35] ?></p>
+                        <p></p>
                     </td>
                 </tr>
                 <tr>
@@ -1094,16 +1094,16 @@ foreach ($customAttributes as $customAttribute) {
                         <p>2</p>
                     </td>
                     <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[27] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[30] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[33] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[36] ?></p>
+                        <p></p>
                     </td>
                 </tr>
                 <tr>
@@ -1111,22 +1111,22 @@ foreach ($customAttributes as $customAttribute) {
                         <p>3</p>
                     </td>
                     <td style="width: 261.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[28] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 81.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[31] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[34] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 53.6pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[37] ?></p>
+                        <p></p>
                     </td>
                 </tr>
             </tbody>
         </table>
         <p>
-            In perfecta stare de functionare d-lui (d-nei)&nbsp;<strong><?= $client['firstName'] . " " . $client['lastName'] ?></strong>, cu locatia in&nbsp;<strong><?= $client['city'] ?>, <?= $client['street1'] ?> <?= $client['street2'] ?></strong>, sector / judet&nbsp;<strong>Constanta</strong>, legitimat cu C.I.&nbsp;<strong><?= $customAttributeValueById[20] ?><?= $customAttributeValueById[21] ?></strong>, C.N.P.: <strong><?= $customAttributeValueById[22] ?></strong>, MAC ADDRESS: <?= $customAttributeValueById[25] ?>.
+            In perfecta stare de functionare d-lui (d-nei)&nbsp;<strong><?= $client['firstName'] . " " . $client['lastName'] ?></strong>, cu locatia in&nbsp;<strong><?= $client['city'] ?>, <?= $client['street1'] ?> <?= $client['street2'] ?></strong>, sector / judet&nbsp;<strong>Constanta</strong>, legitimat cu C.I.&nbsp;<strong><?= $customAttributeValueById[1] ?><?= $customAttributeValueById[2] ?></strong>, C.N.P.: <strong><?= $customAttributeValueById[4] ?></strong>, MAC ADDRESS: <?= $customAttributeValueById[11] ?>.
         </p>
         <p>
             ART. 2. - Prin prezentul proces verbal, beneficiarul atesta bransarea la reteaua URBAN si buna functionare a serviciilor:
@@ -1149,10 +1149,10 @@ foreach ($customAttributes as $customAttribute) {
                         <p>1</p>
                     </td>
                     <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[26] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[33] ?></p>
+                        <p></p>
                     </td>
                 </tr>
                 <tr>
@@ -1160,10 +1160,10 @@ foreach ($customAttributes as $customAttribute) {
                         <p>2</p>
                     </td>
                     <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[27] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[33] ?></p>
+                        <p></p>
                     </td>
                 </tr>
                 <tr>
@@ -1171,10 +1171,10 @@ foreach ($customAttributes as $customAttribute) {
                         <p>3</p>
                     </td>
                     <td style="width: 396.0pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[28] ?></p>
+                        <p></p>
                     </td>
                     <td style="width: 60.3pt; border: solid windowtext 1.0pt; padding: 0cm 5.4pt 0cm 5.4pt;">
-                        <p><?= $customAttributeValueById[34] ?></p>
+                        <p></p>
                     </td>
                 </tr>
             </tbody>
