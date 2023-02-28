@@ -42,10 +42,6 @@ foreach ($customAttributes as $customAttribute) {
     <title>Contract <?= $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'] ?></title>
     <style>
         body {
-            /* margin-top: 1cm;
-            margin-left: 1cm;
-            margin-right: 1cm;
-            margin-bottom: 1cm; */
             position: relative;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -218,9 +214,9 @@ foreach ($customAttributes as $customAttribute) {
                     </td>
                     <td>
                         <p>
-                            <strong>Serie C.I.:&nbsp;</strong> <?= $customAttributeValueById[1] ?>
-                            <strong>Numar C.I.:&nbsp;</strong> <?= $customAttributeValueById[2] ?> <br>
-                            <strong>Cod Numeric Personal:&nbsp;</strong> <?= $customAttributeValueById[4] ?> <br>
+                            <strong>Serie C.I.:&nbsp;</strong> <?= $customAttributeValueById[1] ?? "necompletat" ?>
+                            <strong>Numar C.I.:&nbsp;</strong> <?= $customAttributeValueById[2] ?? "necompletat" ?> <br>
+                            <strong>Cod Numeric Personal:&nbsp;</strong> <?= $customAttributeValueById[4] ?? "necompletat" ?> <br>
                             <strong>Cod fiscal:&nbsp;</strong><?= $client['companyTaxId'] ?><br>
                             <strong>Nr. reg. comert:&nbsp;</strong><?= $client['companyRegistrationNumber'] ?>
                         </p>
@@ -228,7 +224,7 @@ foreach ($customAttributes as $customAttribute) {
                     <td>
                         <p>
                             <strong>Emis de:&nbsp;</strong> SPCLEP <?= $client['city'] ?>
-                            <strong>la data de:&nbsp;</strong> <?= $customAttributeValueById[5] ?>
+                            <strong>la data de:&nbsp;</strong> <?= $customAttributeValueById[5] ?? "necompletat" ?>
                         </p>
                     </td>
                 </tr>
@@ -324,84 +320,82 @@ foreach ($customAttributes as $customAttribute) {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <?php if ($services) : ?>
-                            <?php foreach ($services as $service) : ?>
+                        <?php foreach ($services as $service) : ?>
 
-                                <?php if ($service['servicePlanId'] == 6) : ?>
-                                    <center>
-                                        <strong>Internet Extra - 50RON / luna</strong>
-                                        <br>
-                                        Viteza de 1000Mbps
-                                        <br>
-                                        OFERTA - 30% OFF - 35RON / luna
-                                        <br>
-                                        Necesita achizitia unui router WIFI.
-                                        <br>
-                                        Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
-                                        personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
-                                        instalare in maxim 5 zile lucratoare
-                                        <br>
-                                        <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                        <br><br>
-                                    </center>
-                                <?php endif; ?>
+                            <?php if ($service['servicePlanId'] == 6) : ?>
+                                <center>
+                                    <strong>Internet Extra - 50RON / luna</strong>
+                                    <br>
+                                    Viteza de 1000Mbps
+                                    <br>
+                                    OFERTA - 30% OFF - 35RON / luna
+                                    <br>
+                                    Necesita achizitia unui router WIFI.
+                                    <br>
+                                    Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
+                                    personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
+                                    instalare in maxim 5 zile lucratoare
+                                    <br>
+                                    <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
+                                    <br><br>
+                                </center>
+                            <?php endif; ?>
 
-                                <?php if ($service['servicePlanId'] == 1) : ?>
-                                    <center>
-                                        <strong> Internet Standard - 25RON / luna </strong>
-                                        <br>
-                                        Viteza de 1000Mbps
-                                        <br>
-                                        Necesita achizitia unui router WIFI.
-                                        <br>
-                                        Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
-                                        personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
-                                        instalare in maxim 5 zile lucratoare
-                                        <br>
-                                        <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                        <br><br>
-                                    </center>
-                                <?php endif; ?>
+                            <?php if ($service['servicePlanId'] == 1) : ?>
+                                <center>
+                                    <strong> Internet Standard - 25RON / luna </strong>
+                                    <br>
+                                    Viteza de 1000Mbps
+                                    <br>
+                                    Necesita achizitia unui router WIFI.
+                                    <br>
+                                    Beneficii: trafic nelimitat, conectare gratuita, viteze simetrice, adrese de email
+                                    personalizate gratuite, spatiu de stocare gratuit, WiFi gratuit in zonele acoperite,
+                                    instalare in maxim 5 zile lucratoare
+                                    <br>
+                                    <strong> <? $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
+                                    <br><br>
+                                </center>
+                            <?php endif; ?>
 
-                                <?php if ($service['servicePlanId'] == 13) : ?>
-                                    <center>
-                                        <strong>Televiziune extra - 75RON / luna </strong>
-                                        <br>
-                                        220 canale digitale / 50+ canale HD
-                                        <br>
-                                        extraoptiuni incluse: Filme + Sport + International
-                                        <br>
-                                        OFERTA - 53.3% OFF - 35RON / luna
-                                        <br>
-                                        Conectare gratuita
-                                        <br>
-                                        <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                        <br><br>
-                                    </center>
-                                <?php endif; ?>
+                            <?php if ($service['servicePlanId'] == 13) : ?>
+                                <center>
+                                    <strong>Televiziune extra - 75RON / luna </strong>
+                                    <br>
+                                    220 canale digitale / 50+ canale HD
+                                    <br>
+                                    extraoptiuni incluse: Filme + Sport + International
+                                    <br>
+                                    OFERTA - 53.3% OFF - 35RON / luna
+                                    <br>
+                                    Conectare gratuita
+                                    <br>
+                                    <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
+                                    <br><br>
+                                </center>
+                            <?php endif; ?>
 
-                                <?php if ($service['servicePlanId'] == 4) : ?>
-                                    <center>
-                                        <strong> Pachet Internet Extra + TV 1 an - 125RON / luna </strong>
-                                        <br>
-                                        Internet Extra - 50RON | Televiziune Extra - 75RON
-                                        <br>
-                                        OFERTA - 40% OFF - 75RON / luna
-                                        <br>
-                                        Router WiFi in custodie pe durata contractului
-                                        <br>
-                                        Conectare gratuita
-                                        <br>
-                                        <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
-                                        <br>
-                                        3 luni gratuite <b>pe an</b>.
-                                        <br>
-                                        Reducere pentru plata anticipata si integrala: 25% (9 luni + 3 gratuite).
-                                        <br><br>
-                                    </center>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php if ($service['servicePlanId'] == 4) : ?>
+                                <center>
+                                    <strong> Pachet Internet Extra + TV 1 an - 125RON / luna </strong>
+                                    <br>
+                                    Internet Extra - 50RON | Televiziune Extra - 75RON
+                                    <br>
+                                    OFERTA - 40% OFF - 75RON / luna
+                                    <br>
+                                    Router WiFi in custodie pe durata contractului
+                                    <br>
+                                    Conectare gratuita
+                                    <br>
+                                    <strong><?= $surchargeById[2] ?> - <?= $surchargePrice[2] ?> RON / luna</strong>
+                                    <br>
+                                    3 luni gratuite <b>pe an</b>.
+                                    <br>
+                                    Reducere pentru plata anticipata si integrala: 25% (9 luni + 3 gratuite).
+                                    <br><br>
+                                </center>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                         <center>
                             Taxa suspendare - 125RON | Taxa reactivare - 125RON | Taxa conectare - 250RON
                         </center>
@@ -1126,7 +1120,7 @@ foreach ($customAttributes as $customAttribute) {
             </tbody>
         </table>
         <p>
-            In perfecta stare de functionare d-lui (d-nei)&nbsp;<strong><?= $client['firstName'] . " " . $client['lastName'] ?></strong>, cu locatia in&nbsp;<strong><?= $client['city'] ?>, <?= $client['street1'] ?> <?= $client['street2'] ?></strong>, sector / judet&nbsp;<strong>Constanta</strong>, legitimat cu C.I.&nbsp;<strong><?= $customAttributeValueById[1] ?><?= $customAttributeValueById[2] ?></strong>, C.N.P.: <strong><?= $customAttributeValueById[4] ?></strong>, MAC ADDRESS: <?= $customAttributeValueById[11] ?>.
+            In perfecta stare de functionare d-lui (d-nei)&nbsp;<strong><?= $client['firstName'] . " " . $client['lastName'] ?></strong>, cu locatia in&nbsp;<strong><?= $client['city'] ?>, <?= $client['street1'] ?> <?= $client['street2'] ?></strong>, sector / judet&nbsp;<strong>Constanta</strong>, legitimat cu C.I.&nbsp;<strong><?= $customAttributeValueById[1] ?? "necompletat" ?> <?= $customAttributeValueById[2] ?? "necompletat" ?></strong>, C.N.P.: <strong><?= $customAttributeValueById[4] ?? "necompletat" ?></strong>, MAC ADDRESS: <?= $customAttributeValueById[11] ?? "necompletat" ?>.
         </p>
         <p>
             ART. 2. - Prin prezentul proces verbal, beneficiarul atesta bransarea la reteaua URBAN si buna functionare a serviciilor:
@@ -1341,11 +1335,12 @@ foreach ($customAttributes as $customAttribute) {
             </li>
             Pentru a intelege cum sa imbunatatim experienta dumneavoastra la 07INTERNET, analizam datele dumneavoastra de contact si datele contului de client, acordand o atentie sporita abonamentelor si parerilor
             dumneavoastra referitoare la produsele si serviciile 07INTERNET. De asemenea, convorbirile telefonice pe care le aveti cu departamentele companiei vor fi inregistrate numai cu acordul dumneavoastra, oferit la momentul convorbirii.
-        </ul <ul>
-        <li>
-            <h3>Cat timp pastram datele dumneavoastra?</h3>
-        </li>
-        Datele dumneavoastra sunt pastrate pe durata contractului.
+        </ul>
+        <ul>
+            <li>
+                <h3>Cat timp pastram datele dumneavoastra?</h3>
+            </li>
+            Datele dumneavoastra sunt pastrate pe durata contractului.
         </ul>
 
         <ul>
@@ -1400,147 +1395,226 @@ foreach ($customAttributes as $customAttribute) {
             Legislatia cu privire la prelucrarea datelor personale permite prelucrarea datelor cu caracter anonim si agregate, acestea nefiind considerate date cu caracter personal.
         </ul>
         </p>
-        <h3>4. Pentru recomandari TV personalizate</h4>
-            <p>
-                Daca aveti unul dintre ultimele modele de mediabox Horizon oferite de catre 07INTERNET, vom activa o noua functionalitate ce ne va permite sa va furnizam recomandari personalizate de televiziune:
-                sa va amintim de show-urile preferate, sa va recomandam emisiuni/programe noi, adaptate gusturilor dumneavoastra, iar in baza istoricului dumneavoastra de vizionare, sa va sugeram cele mai vizionate canale.
-                Vom face asta daca avem consimtamantul dumneavoastra (pe care vi-l puteti exprima prin intermediul mediabox-ului si, de asemenea, vi-l puteti retrage oricand). Detalii despre aceasta functionalitate vor fi
-                disponibile in meniul mediabox-ului dumneavoastra. In aceasta activitate, nu analizam si nu luam in calcul vizionarea canalelor/emisiunilor dedicate entertainment-ului pentru adulti.
-            <ul>
-                <li>
-                    <h3>Ce date folosim?</h3>
-                </li>
-                Datele de contact, datele contului de client, datele TV.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Cat timp pastram datele dumneavoastra?</h3>
-                </li>
-                Recomandarile personalizate sunt bazate pe datele TV colectate in ultimele 3 luni de vizionare.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Dezvaluim datele dumneavoastra?</h3>
-                </li>
-                Pentru a analiza datele privind comportamentul si preferintele dumneavoastra TV si pentru a realiza rapoarte combinate si pseudonimizate pe care sa le furnizam altor entitati partenere,
-                dezvaluim datele dumneavoastra catre companiile din cadrul grupului 07INTERNET, companiei noastra mama, filialelor ei sau altor companii aflate sub control comun („Afiliatii”).
-                Facem aceasta dezvaluire pentru a imbunatati furnizarea serviciilor si functionarea platformei Horizon. Intr-o astfel de situatie, ne asiguram ca Afiliatii respecta prezenta Informare.
-                Datele pseudonimizate sunt acele date care nu pot fi atribuite unui titular fara a folosi/verifica informatii suplimentare, stocate separat.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Baza legala pentru prelucrarea acestor date</h3>
-                </li>
-                Consimtamantul dumneavoastra.
-            </ul>
-            </p>
-            <h3>5. Pentru scopuri statistice si de analiza</h3>
-            <p>
-                Pentru a optimiza serviciile 07INTERNET si pentru a veni in intampinarea nevoilor clientilor 07INTERNET, extragem, transformam in date cu caracter anonim, combinam si agregam datele dumneavoastra
-                cu cele ale altor clienti, pentru a avea o imagine statistica a bazei de clienti 07INTERNET. Parte din politica companiei 07INTERNET presupune analiza datelor agregate pe care le avem,
-                in vederea dezvoltarii / optimizarii serviciilor si platformelor / produselor 07INTERNET in general, si nu pentru a lua actiuni privind o anume persoana.
-            <ul>
-                <li>
-                    <h3>Ce date folosim pentru a realiza aceste rapoarte?</h3>
-                </li>
-                Datele de contact, datele contului de client.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Cat timp pastram datele dumneavoastra?</h3>
-                </li>
-                Vom pastra rapoartele statistice pe durata necesara utilizarii lor.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Dezvaluim datele dumneavoastra?</h3>
-                </li>
-                Rezultatele rapoartelor statistice (care nu permit identificarea datelor dumneavoastra sau individualizarea dumneavoastra) si analizele bazate pe aceste rapoarte pot fi dezvaluite companiei noastra mama
-                (07INTERNET), pentru evidentierea activitatii locale a companiei 07INTERNET, cat si pentru stabilirea unor directii de dezvoltare comerciale. Intr-o astfel de situatie, ne asiguram ca aceasta respecta
-                prezenta Informare.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Baza legala pentru prelucrarea acestor date</h3>
-                </li>
-                Scop de prelucrare compatibil cu scopul initial al prelucrarii datelor cu caracter personal.
-            </ul>
-            </p>
-            <h3>6. Pentru a ne indeplini obligatiile legale</h3>
-            <p>
-                Avem obligatia ca, la solicitarea autoritatilor publice, intocmita in conformitate cu prevederile legale aplicabile, sa comunicam catre acestea datele dumneavoastra. In cazul in care primim o solicitare de
-                informatii de la o autoritate publica, spre exemplu, in cadrul unei investigatii cu privire la piata pe care activam, vom accesa si trimite datele dumneavoastra catre aceasta.
-                <br>
-                De asemenea, in calitate de abonat al serviciilor de comunicatii electronice, aveti dreptul ca datele dumneavoastra cu caracter personal sa fie incluse in toate registrele publice ale abonatilor
-                (in forma scrisa sau electronica). In acest sens, in cazul in care nu v-ati exprimat dezacordul in 45 de zile de la data semnarii contractului, v-am introdus numele, adresa si numarul dumneavoastra de telefon
-                in registrul abonatilor tinut de 07INTERNET. Conform legislatiei in vigoare, in situatia in care aceste informatii vor fi solicitate de catre persoane care pun la dispozitie registre ale abonatilor
-                care furnizeaza servicii de informatii privind abonatii, veti fi notificat de catre acestia. Compania 07INTERNET este obligata sa dezvaluie aceste date daca in termen de 45 de zile de la notificare
-                nu v-ati exprimat dezacordul cu privire la dezvaluire.
+        <h3>4. Pentru recomandari TV personalizate</h3>
+        <p>
+            Daca aveti unul dintre ultimele modele de mediabox Horizon oferite de catre 07INTERNET, vom activa o noua functionalitate ce ne va permite sa va furnizam recomandari personalizate de televiziune:
+            sa va amintim de show-urile preferate, sa va recomandam emisiuni/programe noi, adaptate gusturilor dumneavoastra, iar in baza istoricului dumneavoastra de vizionare, sa va sugeram cele mai vizionate canale.
+            Vom face asta daca avem consimtamantul dumneavoastra (pe care vi-l puteti exprima prin intermediul mediabox-ului si, de asemenea, vi-l puteti retrage oricand). Detalii despre aceasta functionalitate vor fi
+            disponibile in meniul mediabox-ului dumneavoastra. In aceasta activitate, nu analizam si nu luam in calcul vizionarea canalelor/emisiunilor dedicate entertainment-ului pentru adulti.
+        <ul>
+            <li>
+                <h3>Ce date folosim?</h3>
+            </li>
+            Datele de contact, datele contului de client, datele TV.
+        </ul>
+        <ul>
+            <li>
+                <h3>Cat timp pastram datele dumneavoastra?</h3>
+            </li>
+            Recomandarile personalizate sunt bazate pe datele TV colectate in ultimele 3 luni de vizionare.
+        </ul>
+        <ul>
+            <li>
+                <h3>Dezvaluim datele dumneavoastra?</h3>
+            </li>
+            Pentru a analiza datele privind comportamentul si preferintele dumneavoastra TV si pentru a realiza rapoarte combinate si pseudonimizate pe care sa le furnizam altor entitati partenere,
+            dezvaluim datele dumneavoastra catre companiile din cadrul grupului 07INTERNET, companiei noastra mama, filialelor ei sau altor companii aflate sub control comun („Afiliatii”).
+            Facem aceasta dezvaluire pentru a imbunatati furnizarea serviciilor si functionarea platformei Horizon. Intr-o astfel de situatie, ne asiguram ca Afiliatii respecta prezenta Informare.
+            Datele pseudonimizate sunt acele date care nu pot fi atribuite unui titular fara a folosi/verifica informatii suplimentare, stocate separat.
+        </ul>
+        <ul>
+            <li>
+                <h3>Baza legala pentru prelucrarea acestor date</h3>
+            </li>
+            Consimtamantul dumneavoastra.
+        </ul>
+        </p>
+        <h3>5. Pentru scopuri statistice si de analiza</h3>
+        <p>
+            Pentru a optimiza serviciile 07INTERNET si pentru a veni in intampinarea nevoilor clientilor 07INTERNET, extragem, transformam in date cu caracter anonim, combinam si agregam datele dumneavoastra
+            cu cele ale altor clienti, pentru a avea o imagine statistica a bazei de clienti 07INTERNET. Parte din politica companiei 07INTERNET presupune analiza datelor agregate pe care le avem,
+            in vederea dezvoltarii / optimizarii serviciilor si platformelor / produselor 07INTERNET in general, si nu pentru a lua actiuni privind o anume persoana.
+        <ul>
+            <li>
+                <h3>Ce date folosim pentru a realiza aceste rapoarte?</h3>
+            </li>
+            Datele de contact, datele contului de client.
+        </ul>
+        <ul>
+            <li>
+                <h3>Cat timp pastram datele dumneavoastra?</h3>
+            </li>
+            Vom pastra rapoartele statistice pe durata necesara utilizarii lor.
+        </ul>
+        <ul>
+            <li>
+                <h3>Dezvaluim datele dumneavoastra?</h3>
+            </li>
+            Rezultatele rapoartelor statistice (care nu permit identificarea datelor dumneavoastra sau individualizarea dumneavoastra) si analizele bazate pe aceste rapoarte pot fi dezvaluite companiei noastra mama
+            (07INTERNET), pentru evidentierea activitatii locale a companiei 07INTERNET, cat si pentru stabilirea unor directii de dezvoltare comerciale. Intr-o astfel de situatie, ne asiguram ca aceasta respecta
+            prezenta Informare.
+        </ul>
+        <ul>
+            <li>
+                <h3>Baza legala pentru prelucrarea acestor date</h3>
+            </li>
+            Scop de prelucrare compatibil cu scopul initial al prelucrarii datelor cu caracter personal.
+        </ul>
+        </p>
+        <h3>6. Pentru a ne indeplini obligatiile legale</h3>
+        <p>
+            Avem obligatia ca, la solicitarea autoritatilor publice, intocmita in conformitate cu prevederile legale aplicabile, sa comunicam catre acestea datele dumneavoastra. In cazul in care primim o solicitare de
+            informatii de la o autoritate publica, spre exemplu, in cadrul unei investigatii cu privire la piata pe care activam, vom accesa si trimite datele dumneavoastra catre aceasta.
+            <br>
+            De asemenea, in calitate de abonat al serviciilor de comunicatii electronice, aveti dreptul ca datele dumneavoastra cu caracter personal sa fie incluse in toate registrele publice ale abonatilor
+            (in forma scrisa sau electronica). In acest sens, in cazul in care nu v-ati exprimat dezacordul in 45 de zile de la data semnarii contractului, v-am introdus numele, adresa si numarul dumneavoastra de telefon
+            in registrul abonatilor tinut de 07INTERNET. Conform legislatiei in vigoare, in situatia in care aceste informatii vor fi solicitate de catre persoane care pun la dispozitie registre ale abonatilor
+            care furnizeaza servicii de informatii privind abonatii, veti fi notificat de catre acestia. Compania 07INTERNET este obligata sa dezvaluie aceste date daca in termen de 45 de zile de la notificare
+            nu v-ati exprimat dezacordul cu privire la dezvaluire.
 
-            <ul>
-                <li>
-                    <h3>Ce date trebuie sa pastram?</h3>
-                </li>
-                Datele de contact, datele contului de client, datele de telefonie, datele de internet si date pentru registrele abonatilor.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Cat timp pastram datele dumneavoastra?</h3>
-                </li>
-                Va vom pastra datele pe toata durata necesara folosirii acestora, astfel cum este indicat de catre autoritatea competenta si in conformitate cu prevederile legislatiei aplicabile in vigoare.
-            </ul>
-            <ul>
-                <li>
-                    <h3>Baza legala pentru prelucrarea acestor date</h3>
-                </li>
-                Obligatie legala.
-            </ul>
-            </p>
-            <h1>Detineti controlul asupra datelor dumneavoastra</h1>
-            <p>
-                Puteti controla modul in care prelucram datele dumneavoastra cu caracter personal, exercitand oricare dintre urmatoarele drepturi/optiuni, oricand doriti.
-                <br>
-                <strong>Accesarea datelor:&nbsp;</strong> puteti solicita o copie a datelor cu caracter personal pe care le detinem despre dumneavoastra.
-                <br>
-                <strong>Rectificarea datelor:&nbsp;</strong> daca datele pe care le detinem despre dumneavoastra sunt inexacte sau incomplete, puteti solicita rectificarea lor.
-                <br>
-                <strong>Opozitia la prelucrarea datelor:&nbsp;</strong> ne puteti solicita sa incetam anumite activitati de prelucrare. In functie de baza legala a prelucrarii, vom analiza cererea, situatia de fapt, precum si prevederile legale
-                aplicabile si vom reveni in termenul legal cu detalii despre implementarea solicitarii.
-                <br>
-                In cazul in care veti alege sa nu va mai prelucram datele cu caracter personal in scopuri de marketing, publicitate si sondaj de satisfactie si nici sa mai primiti vreo comunicare comerciala in
-                legatura cu aceste activitati, indiferent de canalul ales ca mijloc de comunicare, vom opri orice astfel de prelucrare. In cazul canalelor pentru care v-ati dat expres consimtamantul,
-                vom echivala exercitarea dreptului dumneavoastra la opozitie cu o retragere de consimtamant.
-                <br>
-                <strong>Stergerea datelor:&nbsp;</strong> Ne puteti cere sa stergem datele cu caracter personal pe care le detinem despre dumneavoastra. Vom analiza cererea in conformitate cu motivele ce justifica solicitarea si
-                vom reveni in termenul legal cu detalii despre implementarea ei. Ca abordare generala, la data expirarii perioadelor de timp de pastrare a detelor, astfel cum sunt identificate mai sus,
-                datele dumneavoastra vor fi fie sterse, fie anonimizate.
-                <br>
-                <strong>Portabilitatea datelor:&nbsp;</strong> In situatia in care doriti sa va transferati datele catre un alt furnizor, ne puteti solicita sa vi le comunicam intr-un format electronic uzual (acesta este un drept nou conform Regulamentului).
-            </p>
-            <p>
-                <strong>Restrictionarea prelucrarii:&nbsp;</strong> puteti sa solicitati restrictionarea prelucrarii. Vom analiza cererea in raport de cazurile de restrictionare prevazute de lege si vom revenim in termenul legal cu
-                detalii despre implementarea ei (acesta este un drept nou conform Regulamentului).
-                <br>
-                <strong>Retragerea consimtamantului:&nbsp;</strong> in cazul in care v-ati dat consimtamantul, in mod expres, pentru o prelucrare de date, il veti putea retrage oricand. Aceasta retragere se va inregistra in
-                sistemele 07INTERNET fara intarzieri nejustificate.
-            </p>
+        <ul>
+            <li>
+                <h3>Ce date trebuie sa pastram?</h3>
+            </li>
+            Datele de contact, datele contului de client, datele de telefonie, datele de internet si date pentru registrele abonatilor.
+        </ul>
+        <ul>
+            <li>
+                <h3>Cat timp pastram datele dumneavoastra?</h3>
+            </li>
+            Va vom pastra datele pe toata durata necesara folosirii acestora, astfel cum este indicat de catre autoritatea competenta si in conformitate cu prevederile legislatiei aplicabile in vigoare.
+        </ul>
+        <ul>
+            <li>
+                <h3>Baza legala pentru prelucrarea acestor date</h3>
+            </li>
+            Obligatie legala.
+        </ul>
+        </p>
+
+        <h1>Detineti controlul asupra datelor dumneavoastra</h1>
+        <p>
+            Puteti controla modul in care prelucram datele dumneavoastra cu caracter personal, exercitand oricare dintre urmatoarele drepturi/optiuni, oricand doriti.
             <br>
-            <h1>Suntem aici pentru dumneavoastra</h1>
-            <p>
-                Compania care va prelucreaza datele este URBAN NETWORK SOLUTIONS S.R.L. denumita si 07INTERNET.
-                <br>
-                <strong>Responsabilul cu protectia datelor (DPO):&nbsp;</strong> Puteti adresa orice intrebare, comentariu sau orice solicitare privitoare la datele dumneavoastra, Responsabilului 07INTERNET cu Protectia Datelor la adresa de
-                posta electronica: dpo@07internet.ro, la adresa companiei (Str Midiei, Nr 6, Navodari, Constanta, 905700) sau printr-o cerere scrisa in magazinele 07INTERNET. Reteaua de magazine este disponibila
-                pe website-ul oficial al companiei: www.07internet.ro.
-                <br>
-                <strong>Autoritatea de Supraveghere:&nbsp;</strong> De asemenea, puteti sa inaintati o plangere in fata Autoritatii Nationale de Supraveghere a Prelucrarii Datelor cu Caracter Personal (http://www.dataprotection.ro/)
-            </p>
+            <strong>Accesarea datelor:&nbsp;</strong> puteti solicita o copie a datelor cu caracter personal pe care le detinem despre dumneavoastra.
             <br>
-            <h1>Actualizari viitoare</h1>
-            <p>
-                Continutul acestei Informari poate suferi modificari ca urmare a evolutiei pietei sau actualizarii gamei de servicii pe care le prestam. Vom publica orice noua versiune a acestei Informari pe
-                website-ul 07INTERNET si va vom anunta in avans, in timp util, cu privire la orice schimbare ce ar putea afecta serviciile la care v-ati abonat.
-            </p>
+            <strong>Rectificarea datelor:&nbsp;</strong> daca datele pe care le detinem despre dumneavoastra sunt inexacte sau incomplete, puteti solicita rectificarea lor.
+            <br>
+            <strong>Opozitia la prelucrarea datelor:&nbsp;</strong> ne puteti solicita sa incetam anumite activitati de prelucrare. In functie de baza legala a prelucrarii, vom analiza cererea, situatia de fapt, precum si prevederile legale
+            aplicabile si vom reveni in termenul legal cu detalii despre implementarea solicitarii.
+            <br>
+            In cazul in care veti alege sa nu va mai prelucram datele cu caracter personal in scopuri de marketing, publicitate si sondaj de satisfactie si nici sa mai primiti vreo comunicare comerciala in
+            legatura cu aceste activitati, indiferent de canalul ales ca mijloc de comunicare, vom opri orice astfel de prelucrare. In cazul canalelor pentru care v-ati dat expres consimtamantul,
+            vom echivala exercitarea dreptului dumneavoastra la opozitie cu o retragere de consimtamant.
+            <br>
+            <strong>Stergerea datelor:&nbsp;</strong> Ne puteti cere sa stergem datele cu caracter personal pe care le detinem despre dumneavoastra. Vom analiza cererea in conformitate cu motivele ce justifica solicitarea si
+            vom reveni in termenul legal cu detalii despre implementarea ei. Ca abordare generala, la data expirarii perioadelor de timp de pastrare a detelor, astfel cum sunt identificate mai sus,
+            datele dumneavoastra vor fi fie sterse, fie anonimizate.
+            <br>
+            <strong>Portabilitatea datelor:&nbsp;</strong> In situatia in care doriti sa va transferati datele catre un alt furnizor, ne puteti solicita sa vi le comunicam intr-un format electronic uzual (acesta este un drept nou conform Regulamentului).
+        </p>
+        <p>
+            <strong>Restrictionarea prelucrarii:&nbsp;</strong> puteti sa solicitati restrictionarea prelucrarii. Vom analiza cererea in raport de cazurile de restrictionare prevazute de lege si vom revenim in termenul legal cu
+            detalii despre implementarea ei (acesta este un drept nou conform Regulamentului).
+            <br>
+            <strong>Retragerea consimtamantului:&nbsp;</strong> in cazul in care v-ati dat consimtamantul, in mod expres, pentru o prelucrare de date, il veti putea retrage oricand. Aceasta retragere se va inregistra in
+            sistemele 07INTERNET fara intarzieri nejustificate.
+        </p>
+
+        <br>
+
+        <h1>Suntem aici pentru dumneavoastra</h1>
+        <p>
+            Compania care va prelucreaza datele este URBAN NETWORK SOLUTIONS S.R.L. denumita si 07INTERNET.
+            <br>
+            <strong>Responsabilul cu protectia datelor (DPO):&nbsp;</strong> Puteti adresa orice intrebare, comentariu sau orice solicitare privitoare la datele dumneavoastra, Responsabilului 07INTERNET cu Protectia Datelor la adresa de
+            posta electronica: dpo@07internet.ro, la adresa companiei (Str Midiei, Nr 6, Navodari, Constanta, 905700) sau printr-o cerere scrisa in magazinele 07INTERNET. Reteaua de magazine este disponibila
+            pe website-ul oficial al companiei: www.07internet.ro.
+            <br>
+            <strong>Autoritatea de Supraveghere:&nbsp;</strong> De asemenea, puteti sa inaintati o plangere in fata Autoritatii Nationale de Supraveghere a Prelucrarii Datelor cu Caracter Personal (http://www.dataprotection.ro/)
+        </p>
+
+        <br>
+
+        <h1>Actualizari viitoare</h1>
+        <p>
+            Continutul acestei Informari poate suferi modificari ca urmare a evolutiei pietei sau actualizarii gamei de servicii pe care le prestam. Vom publica orice noua versiune a acestei Informari pe
+            website-ul 07INTERNET si va vom anunta in avans, in timp util, cu privire la orice schimbare ce ar putea afecta serviciile la care v-ati abonat.
+        </p>
+
+        <br />
+
+        <h3 style="text-align: center;">Informatii privind exercitarea dreptului de retragere</h3>
+        <h3 style="font-weight: bold;">Dreptul de retragere</h3>
+        <p>
+            Aveti dreptul de a va retrage din prezentul contract, fara a preciza motivele, in termen de 14 zile. Perioada de
+            retragere expira după 14 zile începând de la ziua incheierii contractului.
+            <br />
+            Pentru a va exercita dreptul de retragere trebuie sa ne informati cu privire la decizia dvs. de a va
+            retrage din prezentul contract.
+            <br />
+            Solicitarea de retragere din contract poate fi transmisa online, prin e-mail (aceste date de contact le
+            regasiti in contractul incheiat). Solicitarea trebuie să fie neechivoca. In acest scop, puteti folosi modelul de
+            retragere de mai jos. Daca optati pentru modalitatea de transmitere online, va vom transmite fara
+            intarziere, prin e-mail, confirmarea de primire a cererii de retragere.
+            <br />
+            Pentru a respecta termenul-limita de retragere este suficient sa transmiteti solicitarea privind exercitarea
+            dreptului de retragere inainte de expirarea perioadei de retragere
+        </p>
+
+        <br />
+
+        <h3 style="font-weight: bold;">Consecinte retragerii</h3>
+        <p>
+            Daca ati solicitat inceperea prestarii serviciului de furnizare in perioada de retragere, ne datorati o suma
+            reprezentand contravaloarea serviciilor furnizate pana la data incetarii contractului.
+        </p>
+
+        <h1 style="text-align: center;">Formular de retragere</h1>
+        <p style="font-size: 10px; text-align: center;">conform OUG nr. 34/2014 privind drepturile consumatorilor
+            <sup>1)</sup> in cadrul contractelor incheiate cu profesionistii, precum si pentru modificarea si completarea unor acte normative
+        </p>
+
+        <br />
+
+        <p>
+            <strong>Catre:&nbsp;</strong> URBAN NETWORK SOLUTIONS S.R.L <br />
+            <strong>Adresa:&nbsp;</strong> Bv Mamaia Nord, Centrul de Afaceri, Spatiul 01-05, Navodari, Constanta <br />
+            <strong>Telefon:&nbsp;</strong> +4 07INTERNET; +4 0241700000 <br />
+            <strong>E-mail:&nbsp;</strong> client@07internet.ro
+        </p>
+
+        <br />
+
+        <p>
+            Va informez prin prezenta cu privire la retragerea mea din contractul nr. ______________, din data de
+            _______________________, incheiat prin __________________________, avand ca obiect furnizarea ____________________
+            ____________________________ la locul de consum identificat prin:
+            <br />
+            - adresa: localitatea __________________, str. _____________________________, nr. ______, bl. ________, sc. _______,
+            et. _____, ap. ______, judetul / sectorul __________________.
+            <br />
+            - cod client: ____________________.
+        </p>
+
+        <br />
+
+        <h3 style="font-weight: bold;">Consumator:</h3>
+        <p>
+            <strong>Nume prenume:&nbsp;</strong> _____________________________ <br />
+            <strong>Act de identitate:&nbsp;</strong> _____________________________ <br />
+            <strong>Telefon:&nbsp;</strong> _____________________________ <br />
+            <strong>E-mail:&nbsp;</strong> _____________________________ <br />
+            <strong>Semnatura:&nbsp;</strong> _____________________________ <br />
+            <strong>Data:&nbsp;</strong> _____________________________
+        </p>
+
+        <hr />
+
+        <p>
+            <sup>1)</sup> Consumator - orice persoana fizica sau grup de persoane fizice constituite in asociatii, asa cum sunt definite la art. 2 pct. 2 din
+            Ordonanta Guvernului nr. 21/1992 privind protectia consumatorilor, republicata, cu modificarile si completarile ulterioare.
+        </p>
     </div>
 </body>
 
