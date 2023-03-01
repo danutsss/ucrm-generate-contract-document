@@ -112,8 +112,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            $clientName = $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'];
-                            $fileName = "Contract - $clientName (#$clientId).pdf";
+                            $fileName = "Contract (client ID: #$clientId)";
                             $encoding = "base64";
                             $type = "application/pdf";
 
