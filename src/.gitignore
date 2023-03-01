@@ -5,3 +5,5 @@ ucrm.json
 .ucrm-plugin-execution-requested
 
 .env
+
+delete-documents.php
