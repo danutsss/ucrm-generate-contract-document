@@ -35,17 +35,18 @@ if (array_key_exists('generate', $_GET)) {
     ];
 
     $count = 0;
-    foreach ($_GET['generate'] as $clientId) {
-        try {
 
-            if (array_key_exists('template', $_GET)) {
+    if (array_key_exists('template', $_GET)) {
 
-                switch ($_GET['template']) {
-                    case '0':
-                        var_dump('You need to select a template!');
-                        break;
+        switch ($_GET['template']) {
+            case '0':
+                var_dump('You need to select a template!');
+                die();
+                break;
 
-                    case 'urban': {
+            case 'urban': {
+                    foreach ($_GET['generate'] as $clientId) {
+                        try {
                             $client = $api::doRequest("clients/$clientId") ?: [];
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
                             $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
@@ -77,10 +78,18 @@ if (array_key_exists('generate', $_GET)) {
 
                             $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
 
-                            break;
+                            $count++;
+                        } catch (\Exception $e) {
+                            var_dump($e->getMessage());
                         }
+                    }
 
-                    case 'zerosapte': {
+                    break;
+                }
+
+            case 'zerosapte': {
+                    foreach ($_GET['generate'] as $clientId) {
+                        try {
                             $client = $api::doRequest("clients/$clientId") ?: [];
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
                             $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
@@ -112,21 +121,23 @@ if (array_key_exists('generate', $_GET)) {
 
                             $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
 
-                            break;
+                            $count++;
+                        } catch (\Exception $e) {
+                            var_dump($e->getMessage());
                         }
+                    }
 
-                    default: {
-                            var_dump('You need to select a template!');
-                            break;
-                        }
+                    break;
                 }
-            }
 
-            $count++;
-        } catch (\Exception $e) {
-            var_dump($e->getMessage());
+            default: {
+                    var_dump('You need to select a template!');
+                    die();
+                    break;
+                }
         }
     }
+
     var_dump("Generated contract documents for $count clients.");
 }
 
