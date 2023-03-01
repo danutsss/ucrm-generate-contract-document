@@ -38,36 +38,80 @@ if (array_key_exists('generate', $_GET)) {
     foreach ($_GET['generate'] as $clientId) {
         try {
 
-            $client = $api::doRequest("clients/$clientId") ?: [];
-            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
-            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
+            if (array_key_exists('template', $_GET)) {
 
-            $templatePath = __DIR__ . "/templates/contract-template.php";
-            $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
+                switch ($_GET['template']) {
+                    case 'urban': {
+                            $client = $api::doRequest("clients/$clientId") ?: [];
+                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
+
+                            $templatePath = __DIR__ . "/templates/contracts/urban.php";
+                            $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
 
 
-            // Initialize Dompdf class.
-            $PDF = new Dompdf();
+                            // Initialize Dompdf class.
+                            $PDF = new Dompdf();
 
-            $pdfOptions = $PDF->getOptions();
-            $pdfOptions->set('isRemoteEnabled', true);
-            $pdfOptions->set('isHtml5ParserEnabled', true);
-            $PDF->setOptions($pdfOptions);
+                            $pdfOptions = $PDF->getOptions();
+                            $pdfOptions->set('isRemoteEnabled', true);
+                            $pdfOptions->set('isHtml5ParserEnabled', true);
+                            $PDF->setOptions($pdfOptions);
 
-            $PDF->loadHtml($generatedDocument);
-            $PDF->setPaper('A4', 'portrait');
-            $PDF->render();
+                            $PDF->loadHtml($generatedDocument);
+                            $PDF->setPaper('A4', 'portrait');
+                            $PDF->render();
 
-            $pdfAttachment = $PDF->output();
+                            $pdfAttachment = $PDF->output();
 
-            $clientName = $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'];
-            $fileName = "Contract - $clientName (#$clientId).pdf";
-            $encoding = "base64";
-            $type = "application/pdf";
+                            $clientName = $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'];
+                            $fileName = "Contract - $clientName (#$clientId).pdf";
+                            $encoding = "base64";
+                            $type = "application/pdf";
 
-            $fileEncoding = base64_encode($pdfAttachment);
+                            $fileEncoding = base64_encode($pdfAttachment);
 
-            $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
+                            $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
+
+                            break;
+                        }
+
+                    case 'zerosapte': {
+                            $client = $api::doRequest("clients/$clientId") ?: [];
+                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
+
+                            $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
+                            $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
+
+
+                            // Initialize Dompdf class.
+                            $PDF = new Dompdf();
+
+                            $pdfOptions = $PDF->getOptions();
+                            $pdfOptions->set('isRemoteEnabled', true);
+                            $pdfOptions->set('isHtml5ParserEnabled', true);
+                            $PDF->setOptions($pdfOptions);
+
+                            $PDF->loadHtml($generatedDocument);
+                            $PDF->setPaper('A4', 'portrait');
+                            $PDF->render();
+
+                            $pdfAttachment = $PDF->output();
+
+                            $clientName = $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'];
+                            $fileName = "Contract - $clientName (#$clientId).pdf";
+                            $encoding = "base64";
+                            $type = "application/pdf";
+
+                            $fileEncoding = base64_encode($pdfAttachment);
+
+                            $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
+
+                            break;
+                        }
+                }
+            }
 
             $count++;
         } catch (\Exception $e) {

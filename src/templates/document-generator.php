@@ -38,7 +38,7 @@
                                         <select name="template" id="frm-template" class="form-control form-control-sm">
                                             <option value="0">Select template</option>
                                             <option value="urban">URBAN NETWORK SOLUTIONS S.R.L</option>
-                                            <option value="rural">ZERO SAPTE SERVICES S.R.L</option>
+                                            <option value="zerosapte">ZERO SAPTE SERVICES S.R.L</option>
                                         </select>
                                     </div>
 
