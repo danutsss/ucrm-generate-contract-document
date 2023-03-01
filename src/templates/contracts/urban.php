@@ -1131,7 +1131,7 @@ $companyName = $client['companyName'];
                 <?php foreach ($services as $index => $service) : ?>
                     <tr>
                         <td style="width: 45.0pt;" class="table-border table-padding">
-                            <p><?= $index ?></p>
+                            <p><?= $index + 1 ?></p>
                         </td>
                         <td style="width: 396.0pt;" class="table-border table-padding">
                             <p><?= $service['name'] ?></p>
