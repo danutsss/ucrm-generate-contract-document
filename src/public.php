@@ -41,6 +41,10 @@ if (array_key_exists('generate', $_GET)) {
             if (array_key_exists('template', $_GET)) {
 
                 switch ($_GET['template']) {
+                    case '0':
+                        var_dump('You need to select a template!');
+                        break;
+
                     case 'urban': {
                             $client = $api::doRequest("clients/$clientId") ?: [];
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
@@ -108,6 +112,11 @@ if (array_key_exists('generate', $_GET)) {
 
                             $contractGenerator->generateDocument(intval($clientId), $fileName, $fileEncoding);
 
+                            break;
+                        }
+
+                    default: {
+                            var_dump('You need to select a template!');
                             break;
                         }
                 }
