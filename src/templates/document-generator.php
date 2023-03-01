@@ -95,15 +95,17 @@
     </div>
 
     <script>
-        const rangeForm = document.getElementById('generate-form');
+        const inputFrom = document.getElementById('frm-from');
+        const inputTo = document.getElementById('frm-to');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-        rangeForm.addEventListener('change', () => {
-            const from = document.getElementById('frm-from').value;
-            const to = document.getElementById('frm-to').value;
+        inputTo.addEventListener('change', () => {
+            const from = parseInt(inputFrom.value);
+            const to = parseInt(inputTo.value);
 
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox, i) => {
+                const clientId = parseInt(checkbox.value);
 
-            for (let i = 0; i < checkboxes.length; i++) {
                 if (i >= from && i <= to) {
                     checkboxes[i].checked = true;
                 } else {
@@ -121,7 +123,7 @@
                 if (from == 0 && to == checkboxes.length) {
                     checkboxes[i].checked = true;
                 }
-            }
+            });
         });
     </script>
 </body>

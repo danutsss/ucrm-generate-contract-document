@@ -69,7 +69,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            $$fileName = "Contract U.N.S (client ID: #$clientId)";
+                            $fileName = "Contract U.N.S (client ID: #$clientId)";
                             $encoding = "base64";
                             $type = "application/pdf";
 
