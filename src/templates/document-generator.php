@@ -33,6 +33,15 @@
                                         <input type="number" name="to" id="frm-to" placeholder="Y" class="form-control form-control-sm" min="0" max="<?= count($clients) ?>">
                                     </div>
 
+                                    <div class="col-3">
+                                        <label class="mb-0" for="frm-to"><small>Contract template:</small></label>
+                                        <select name="template" id="frm-template" class="form-control form-control-sm">
+                                            <option value="0">Select template</option>
+                                            <option value="urban">URBAN NETWORK SOLUTIONS S.R.L</option>
+                                            <option value="rural">ZERO SAPTE SERVICES S.R.L</option>
+                                        </select>
+                                    </div>
+
                                     <div class="col-auto ml-auto">
                                         <button type="submit" class="btn btn-primary btn-sm pl-4 pr-4">Generate contract</button>
                                     </div>
