@@ -5,7 +5,7 @@ chdir(__DIR__);
 
 use App\Service\CustomApi;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Retrieve API connection.
 $customApi = new CustomApi();
