@@ -22,6 +22,9 @@ $customAttributeValueById = [];
 foreach ($customAttributes as $customAttribute) {
     $customAttributeValueById[$customAttribute['customAttributeId']] = $customAttribute['value'];
 }
+
+$clientName = $client['firstName'] . " " . $client['lastName'];
+$companyName = $client['companyName'];
 ?>
 
 
@@ -31,7 +34,7 @@ foreach ($customAttributes as $customAttribute) {
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contract <?= $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'] ?></title>
+    <title>Contract <?= $clientName ?? $companyName ?></title>
     <style>
         body {
             position: relative;
@@ -191,7 +194,7 @@ foreach ($customAttributes as $customAttribute) {
                 <tr>
                     <td colspan="3">
                         <p>
-                            <strong>Nume:&nbsp;</strong><?= $client['firstName'] . " " . $client['lastName'] ?? $client['companyName'] ?>, <br>
+                            <strong>Nume:&nbsp;</strong><?= $clientName ?? $companyName ?>, <br>
                             <strong>domiciliat / cu sediul in:&nbsp;</strong><?= $client['fullAddress'] ?><br>
 
                             <?php foreach ($contacts as $contact) : ?>
@@ -1124,39 +1127,20 @@ foreach ($customAttributes as $customAttribute) {
                         <p>U.M.</p>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 45.0pt;" class="table-border table-padding">
-                        <p>1</p>
-                    </td>
-                    <td style="width: 396.0pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                    <td style="width: 60.3pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 45.0pt;" class="table-border table-padding">
-                        <p>2</p>
-                    </td>
-                    <td style="width: 396.0pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                    <td style="width: 60.3pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 45.0pt;" class="table-border table-padding">
-                        <p>3</p>
-                    </td>
-                    <td style="width: 396.0pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                    <td style="width: 60.3pt;" class="table-border table-padding">
-                        <p></p>
-                    </td>
-                </tr>
+
+                <?php foreach ($services as $index => $service) : ?>
+                    <tr>
+                        <td style="width: 45.0pt;" class="table-border table-padding">
+                            <p><?= $index ?></p>
+                        </td>
+                        <td style="width: 396.0pt;" class="table-border table-padding">
+                            <p><?= $service['name'] ?></p>
+                        </td>
+                        <td style="width: 60.3pt;" class="table-border table-padding">
+                            <p>buc.</p>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         <p class="center">
