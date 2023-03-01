@@ -12,7 +12,7 @@ $customApi = new CustomApi();
 
 foreach ($services as $service) {
     $serviceId = $service['id'];
-    $service = $customApi::doRequest("clients/services/$serviceId");
+    $service = $customApi::doRequest("clients/services/$serviceId") ?: [];
 }
 
 // Parse the client's custom attributes to an ID <=> value pairs:
@@ -156,7 +156,7 @@ foreach ($customAttributes as $customAttribute) {
             </tbody>
         </table>
         <h1>
-            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['id'] ?>&nbsp;</strong>denumit si ANEXA A.
+            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong>denumit si ANEXA A.
         </h1>
         <table class="paragraph">
             <tbody>
@@ -384,7 +384,10 @@ foreach ($customAttributes as $customAttribute) {
                             <?php endif; ?>
                         <?php endforeach; ?>
                         <p class="center">
-                            Taxa suspendare - 125RON | Taxa reactivare - 125RON | Taxa conectare - 250RON
+                            Taxa suspendare - 125RON | Taxa reactivare - 125RON
+                        </p>
+                        <p class="center">
+                            Taxa conectare (pentru contractele fara perioada minima) - 250RON
                         </p>
                     </td>
                 </tr>
@@ -935,7 +938,7 @@ foreach ($customAttributes as $customAttribute) {
             reprezentand contravaloarea serviciilor furnizate pana la data incetarii contractului, precum si o taxa de instalare.
         </p>
         <h1>CONDITII GENERALE DE FURNIZARE A SERVICIILOR URBAN ("CONDITII GENERALE") - ANEXA A.1</h1>
-        <h3 class="center">LA CONTRACTUL NR.:&nbsp; <?= $client['id'] ?></h3>
+        <h3 class="center">LA CONTRACTUL NR.:&nbsp; <?= $client['userIdent'] ?></h3>
         <h3 class="center">PREVEDERI SPECIFICE SERVICIULUI DE INTERNET SI TELEVIZIUNE</h3>
         <h3>1. Definitii - in cazul in care legea nu prevede altfel, termenii folositi vor avea urmatoarele defintii: </h3>
         <p>
@@ -1028,7 +1031,7 @@ foreach ($customAttributes as $customAttribute) {
         <br>
         <h1>ANEXA C.1 - PROCES VERBAL DE ACCEPTANTA SI PUNERE IN FUNCTIUNE</h1>
         <h1>ANEXA C.2 - PROCES VERBAL DE PREDARE - PRIMIRE CUSTODIE ECHIPAMENTE</h1>
-        <h5 class="header__phone" class="fw-bold">CTR NR.:&nbsp; <?= $client['id'] ?></h5>
+        <h5 class="header__phone" class="fw-bold">CTR NR.:&nbsp; <?= $client['userIdent'] ?></h5>
         <p>
             ART. 1. - URBAN NETWORK SOLUTIONS S.R.L, cu sediul in&nbsp;<strong>Navodari, str. Midiei nr. 6, jud. Constanta</strong>, J13/1022/2017,
             <strong>CUI:</strong> 37374276, Unicredit Navodari, <strong>CONT:</strong> RO70 BACX 0000 0014 5390 8001, reprezentata de
@@ -1145,7 +1148,7 @@ foreach ($customAttributes as $customAttribute) {
             <strong>Suport Tehnic:&nbsp;</strong> - 0241 700 000 intre orele 08:00 - 20:00, 07INTERNET - NONSTOP, E-MAIL - &nbsp;<strong>client@07internet.ro:&nbsp;</strong> - NONSTOP.
         </p>
         <h3 class="center">URBAN NETWORK SOLUTIONS S.R.L.</h3>
-        <h3 class="center">ANEXA C.3 la Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['id'] ?>&nbsp;</strong>.</h3>
+        <h3 class="center">ANEXA C.3 la Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong>.</h3>
         <h1>Informare cu privire la prelucrarea datelor cu caracter personal</h1>
         <p>
             Prelucram date cu caracter personal atunci cand folositi serviciile 07INTERNET, iar modul in care facem acestlucru este prevazut in aceasta Informare.

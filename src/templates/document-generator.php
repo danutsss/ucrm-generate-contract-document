@@ -25,7 +25,7 @@
                                 <div class="form-row">
                                     <div class="col-3">
                                         <label class="mb-0" for="frm-from"><small>From client #:</small></label>
-                                        <input type="number" name="from" id="frm-from" placeholder="X" class="form-control form-control-sm" min="0" value="0" max="<?= count($clients) ?>">
+                                        <input type="number" name="from" id="frm-from" placeholder="X" class="form-control form-control-sm" min="0" max="<?= count($clients) ?>">
                                     </div>
 
                                     <div class="col-3">
@@ -95,35 +95,5 @@
     </div>
 
     <script>
-        const inputFrom = document.getElementById('frm-from');
-        const inputTo = document.getElementById('frm-to');
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        inputTo.addEventListener('change', () => {
-            const from = parseInt(inputFrom.value);
-            const to = parseInt(inputTo.value);
-
-            checkboxes.forEach((checkbox, i) => {
-                const clientId = parseInt(checkbox.value);
-
-                if (i >= from && i <= to) {
-                    checkboxes[i].checked = true;
-                } else {
-                    checkboxes[i].checked = false;
-                }
-
-                if (from > to) {
-                    checkboxes[i].checked = false;
-                }
-
-                if (from == 0 && to == 0) {
-                    checkboxes[i].checked = false;
-                }
-
-                if (from == 0 && to == checkboxes.length) {
-                    checkboxes[i].checked = true;
-                }
-            });
-        });
     </script>
 </body>

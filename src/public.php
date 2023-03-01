@@ -38,29 +38,24 @@ if (array_key_exists('generate', $_GET)) {
 
     if (array_key_exists('template', $_GET)) {
 
-        // Initialize Dompdf class.
-        $PDF = new Dompdf();
-
-        $pdfOptions = $PDF->getOptions();
-        $pdfOptions->set('isRemoteEnabled', true);
-        $pdfOptions->set('isHtml5ParserEnabled', true);
-        $PDF->setOptions($pdfOptions);
-
         switch ($_GET['template']) {
-            case '0':
-                var_dump('You need to select a template!');
-                die();
-                break;
-
             case 'urban': {
                     foreach ($_GET['generate'] as $clientId) {
                         try {
-                            $client = $api::doRequest("clients/$clientId");
-                            $contacts = $api::doRequest("clients/$clientId/contacts");
-                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1");
+                            $client = $api::doRequest("clients/$clientId") ?: [];
+                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
                             $templatePath = __DIR__ . "/templates/contracts/urban.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
+
+                            // Initialize Dompdf class.
+                            $PDF = new Dompdf();
+
+                            $pdfOptions = $PDF->getOptions();
+                            $pdfOptions->set('isRemoteEnabled', true);
+                            $pdfOptions->set('isHtml5ParserEnabled', true);
+                            $PDF->setOptions($pdfOptions);
 
                             $PDF->loadHtml($generatedDocument);
                             $PDF->setPaper('A4', 'portrait');
@@ -81,19 +76,26 @@ if (array_key_exists('generate', $_GET)) {
                             var_dump($e->getMessage());
                         }
                     }
-
                     break;
                 }
 
             case 'zerosapte': {
                     foreach ($_GET['generate'] as $clientId) {
                         try {
-                            $client = $api::doRequest("clients/$clientId");
-                            $contacts = $api::doRequest("clients/$clientId/contacts");
-                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1");
+                            $client = $api::doRequest("clients/$clientId") ?: [];
+                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
                             $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
+
+                            // Initialize Dompdf class.
+                            $PDF = new Dompdf();
+
+                            $pdfOptions = $PDF->getOptions();
+                            $pdfOptions->set('isRemoteEnabled', true);
+                            $pdfOptions->set('isHtml5ParserEnabled', true);
+                            $PDF->setOptions($pdfOptions);
 
                             $PDF->loadHtml($generatedDocument);
                             $PDF->setPaper('A4', 'portrait');
@@ -119,13 +121,10 @@ if (array_key_exists('generate', $_GET)) {
                 }
 
             default: {
-                    var_dump('You need to select a template!');
-                    die();
-                    break;
+                    die("You need to select a template!");
                 }
         }
     }
-
     var_dump("Generated contract documents for $count clients.");
 }
 
