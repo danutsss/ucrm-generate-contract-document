@@ -63,7 +63,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            $fileName = "Contract U.N.S (client ID: #$clientId).pdf";
+                            $fileName = "Contract U.N.S (client ID: #{$client['userIdent']}).pdf";
                             $encoding = "base64";
                             $type = "application/pdf";
 
@@ -103,7 +103,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            $fileName = "Contract 07S (client ID: #$clientId).pdf";
+                            $fileName = "Contract 07S (client ID: #{$client['userIdent']}).pdf";
                             $encoding = "base64";
                             $type = "application/pdf";
 
