@@ -5,7 +5,7 @@
 		"displayName": "Generate contract document",
 		"description": "This plugin calls the API and help us generate a contract document for client.",
 		"url": "https://github.com/danutsss/generate-contract-document",
-		"version": "1.0.0",
+		"version": "1.0.2",
 		"ucrmVersionCompliancy": {
 			"min": "2.14.0",
 			"max": null
@@ -14,14 +14,14 @@
 			"min": "1.0.0-alpha.1",
 			"max": null
 		},
-		"author": "Matei Nicolae - Daniel",
-		"menu": [
-			{
-				"key": "generateContractDocument",
-				"label": "Generate contract document",
-				"type": "admin",
-				"target": "iframe"
-			}
-		]
-	}
+		"author": "Matei Nicolae - Daniel"
+	},
+	"menu": [
+		{
+			"key": "Generate document",
+			"label": "Contract",
+			"type": "admin",
+			"target": "iframe"
+		}
+	]
 }
