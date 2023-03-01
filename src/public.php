@@ -38,6 +38,14 @@ if (array_key_exists('generate', $_GET)) {
 
     if (array_key_exists('template', $_GET)) {
 
+        // Initialize Dompdf class.
+        $PDF = new Dompdf();
+
+        $pdfOptions = $PDF->getOptions();
+        $pdfOptions->set('isRemoteEnabled', true);
+        $pdfOptions->set('isHtml5ParserEnabled', true);
+        $PDF->setOptions($pdfOptions);
+
         switch ($_GET['template']) {
             case '0':
                 var_dump('You need to select a template!');
@@ -53,15 +61,6 @@ if (array_key_exists('generate', $_GET)) {
 
                             $templatePath = __DIR__ . "/templates/contracts/urban.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
-
-
-                            // Initialize Dompdf class.
-                            $PDF = new Dompdf();
-
-                            $pdfOptions = $PDF->getOptions();
-                            $pdfOptions->set('isRemoteEnabled', true);
-                            $pdfOptions->set('isHtml5ParserEnabled', true);
-                            $PDF->setOptions($pdfOptions);
 
                             $PDF->loadHtml($generatedDocument);
                             $PDF->setPaper('A4', 'portrait');
@@ -96,22 +95,13 @@ if (array_key_exists('generate', $_GET)) {
                             $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
 
-
-                            // Initialize Dompdf class.
-                            $PDF = new Dompdf();
-
-                            $pdfOptions = $PDF->getOptions();
-                            $pdfOptions->set('isRemoteEnabled', true);
-                            $pdfOptions->set('isHtml5ParserEnabled', true);
-                            $PDF->setOptions($pdfOptions);
-
                             $PDF->loadHtml($generatedDocument);
                             $PDF->setPaper('A4', 'portrait');
                             $PDF->render();
 
                             $pdfAttachment = $PDF->output();
 
-                            $fileName = "Contract 07S (client ID: #$clientId)";
+                            $fileName = "Contract 07S (client ID: #$clientId).pdf";
                             $encoding = "base64";
                             $type = "application/pdf";
 
