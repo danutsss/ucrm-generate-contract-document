@@ -55,9 +55,9 @@ if (array_key_exists('generate', $_GET)) {
             case 'urban': {
                     foreach ($_GET['generate'] as $clientId) {
                         try {
-                            $client = $api::doRequest("clients/$clientId") ?: [];
-                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
-                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
+                            $client = $api::doRequest("clients/$clientId");
+                            $contacts = $api::doRequest("clients/$clientId/contacts");
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1");
 
                             $templatePath = __DIR__ . "/templates/contracts/urban.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
@@ -88,9 +88,9 @@ if (array_key_exists('generate', $_GET)) {
             case 'zerosapte': {
                     foreach ($_GET['generate'] as $clientId) {
                         try {
-                            $client = $api::doRequest("clients/$clientId") ?: [];
-                            $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
-                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
+                            $client = $api::doRequest("clients/$clientId");
+                            $contacts = $api::doRequest("clients/$clientId/contacts");
+                            $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1");
 
                             $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);

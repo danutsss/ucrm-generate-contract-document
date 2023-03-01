@@ -12,7 +12,7 @@ $customApi = new CustomApi();
 
 foreach ($services as $service) {
     $serviceId = $service['id'];
-    $service = $customApi::doRequest("clients/services/$serviceId") ?: [];
+    $service = $customApi::doRequest("clients/services/$serviceId");
 }
 
 // Parse the client's custom attributes to an ID <=> value pairs:
@@ -23,8 +23,6 @@ foreach ($customAttributes as $customAttribute) {
     $customAttributeValueById[$customAttribute['customAttributeId']] = $customAttribute['value'];
 }
 
-$clientName = $client['firstName'] . " " . $client['lastName'];
-$companyName = $client['companyName'];
 ?>
 
 
@@ -34,7 +32,7 @@ $companyName = $client['companyName'];
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contract <?= $clientName ?? $companyName ?></title>
+    <title>Contract <?= $client['firstName'] ?? $client['companyName'] ?> <?= $client['lastName'] ?></title>
     <style>
         body {
             position: relative;
@@ -194,7 +192,7 @@ $companyName = $client['companyName'];
                 <tr>
                     <td colspan="3">
                         <p>
-                            <strong>Nume:&nbsp;</strong><?= $clientName ?? $companyName ?>, <br>
+                            <strong>Nume:&nbsp;</strong><?= $client['firstName'] ?? $client['companyName'] ?> <?= $client['lastName'] ?>, <br>
                             <strong>domiciliat / cu sediul in:&nbsp;</strong><?= $client['fullAddress'] ?><br>
 
                             <?php foreach ($contacts as $contact) : ?>
