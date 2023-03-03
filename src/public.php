@@ -97,7 +97,12 @@ if (array_key_exists('generate', $_GET)) {
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
                             $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
-                            $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
+                            if (strtotime($client['registrationDate']) <= strtotime('2022-04-01')) {
+                                $templatePath = __DIR__ . "/templates/contracts/urban.php";
+                            } else {
+                                $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
+                            }
+
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
 
                             // Initialize Dompdf class.
@@ -114,7 +119,12 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            $fileName = "Contract 07S (client ID: #{$client['userIdent']}).pdf";
+                            if (strtotime($client['registrationDate']) <= strtotime('2022-04-01')) {
+                                $fileName = "Contract U.N.S (client ID: #{$client['userIdent']}).pdf";
+                            } else {
+                                $fileName = "Contract 07S (client ID: #{$client['userIdent']}).pdf";
+                            }
+
                             $encoding = "base64";
                             $type = "application/pdf";
 
