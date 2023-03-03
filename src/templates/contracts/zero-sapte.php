@@ -23,6 +23,9 @@ foreach ($customAttributes as $customAttribute) {
     $customAttributeValueById[$customAttribute['customAttributeId']] = $customAttribute['value'];
 }
 
+$client['registrationDate'] = new \DateTimeImmutable($client['registrationDate']);
+$client['registrationDate'] = $client['registrationDate']->format('d-m-Y');
+
 ?>
 
 

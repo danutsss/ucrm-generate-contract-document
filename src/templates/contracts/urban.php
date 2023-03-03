@@ -22,6 +22,9 @@ $customAttributeValueById = [];
 foreach ($customAttributes as $customAttribute) {
     $customAttributeValueById[$customAttribute['customAttributeId']] = $customAttribute['value'];
 }
+
+$customAttributeValueById[24] = new \DateTimeImmutable($customAttributeValueById[24]);
+$customAttributeValueById[24] = $customAttributeValueById[24]->format('d-m-Y');
 ?>
 
 
@@ -156,7 +159,7 @@ foreach ($customAttributes as $customAttribute) {
             </tbody>
         </table>
         <h1>
-            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong> din data de: <?= $customAttributeValueById[23] ?> denumit si ANEXA A.
+            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong> din data de: <?= $customAttributeValueById[24] ?> denumit si ANEXA A.
         </h1>
         <table class="paragraph">
             <tbody>
