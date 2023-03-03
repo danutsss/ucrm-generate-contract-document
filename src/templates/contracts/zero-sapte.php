@@ -156,7 +156,7 @@ foreach ($customAttributes as $customAttribute) {
             </tbody>
         </table>
         <h1>
-            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong>denumit si ANEXA A.
+            Contract de prestari servicii internet nr.:&nbsp;<strong><?= $client['userIdent'] ?>&nbsp;</strong> din data de: <?= $client['registrationDate'] ?> denumit si ANEXA A.
         </h1>
         <table class="paragraph">
             <tbody>
