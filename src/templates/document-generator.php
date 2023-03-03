@@ -59,16 +59,23 @@
                                         <tr>
                                             <th scope="col">Client #</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Registration date</th>
                                             <th scope="col">Regenerate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         foreach ($clients as $client) {
+                                            $client['registrationDate'] = new \DateTimeImmutable($client['registrationDate']);
+                                            $client['registrationDate'] = $client['registrationDate']->format('d-m-Y');
+
                                             printf(
                                                 '<tr>
-                                                        <td>%s (id: %s)</td>
+                                                        <td>
+                                                            <a href="https://89.33.88.223/crm/client/%s" target="_blank">%s (id: %s)</a>
+                                                        </td>
                                                         <td>%s %s</td>
+                                                        <td>%s </td>
                                                         <td>
                                                             <div>
                                                                 <input type="checkbox" name="generate[]" value="%s" />
@@ -76,10 +83,12 @@
                                                         </td>
                                                     </tr>
                                                     ',
+                                                $client['id'],
                                                 $client['userIdent'],
                                                 $client['id'],
                                                 $client['firstName'] ?? $client['companyName'],
                                                 $client['lastName'],
+                                                $client['registrationDate'],
                                                 $client['id']
                                             );
                                         }
