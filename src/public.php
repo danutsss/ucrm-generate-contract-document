@@ -12,10 +12,6 @@ chdir(__DIR__);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Loading the ".env" file.
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 // Retrieve API connection.
 $api = new CustomApi();
 $contractGenerator = new ContractGenerator($api);
@@ -46,13 +42,7 @@ if (array_key_exists('generate', $_GET)) {
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
                             $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
-                            if (strtotime($client['registrationDate']) < strtotime('2022-04-01')) {
-                                $templatePath = __DIR__ . "/templates/contracts/urban.php";
-                            } else {
-                                $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
-                            }
-
-                            // $templatePath = __DIR__ . "/templates/contracts/urban.php";
+                            $templatePath = __DIR__ . "/templates/contracts/urban.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
 
                             // Initialize Dompdf class.
@@ -69,7 +59,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            if (strtotime($client['registrationDate']) < strtotime('2022-04-01')) {
+                            if ($_GET['template'] == 'urban') {
                                 $fileName = "Contract U.N.S (client ID: #{$client['userIdent']}).pdf";
                             } else {
                                 $fileName = "Contract 07S (client ID: #{$client['userIdent']}).pdf";
@@ -97,12 +87,7 @@ if (array_key_exists('generate', $_GET)) {
                             $contacts = $api::doRequest("clients/$clientId/contacts") ?: [];
                             $services = $api::doRequest("clients/services?clientId=$clientId&statuses[]=1") ?: [];
 
-                            if (strtotime($client['registrationDate']) < strtotime('2022-04-01')) {
-                                $templatePath = __DIR__ . "/templates/contracts/urban.php";
-                            } else {
-                                $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
-                            }
-
+                            $templatePath = __DIR__ . "/templates/contracts/zero-sapte.php";
                             $generatedDocument = $contractGenerator->generateDocumentTemplate($templatePath, $client, $services, $contacts);
 
                             // Initialize Dompdf class.
@@ -119,7 +104,7 @@ if (array_key_exists('generate', $_GET)) {
 
                             $pdfAttachment = $PDF->output();
 
-                            if (strtotime($client['registrationDate']) < strtotime('2022-04-01')) {
+                            if ($_GET['template'] == 'urban') {
                                 $fileName = "Contract U.N.S (client ID: #{$client['userIdent']}).pdf";
                             } else {
                                 $fileName = "Contract 07S (client ID: #{$client['userIdent']}).pdf";

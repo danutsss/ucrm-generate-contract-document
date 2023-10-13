@@ -15,6 +15,9 @@ class CustomApi
      * @return array|null
      */
 
+    const API_URL = "https://89.33.88.34/crm/api/v1.0";
+    const API_KEY = "eUTP+M5+Y3HOzaLfXl4coLvyef6otD98vTdWeRaPEuaNJcEJ5a1YKcLCG89342k1";
+
 
     public static function doRequest($url, $method = 'GET', $post = [])
     {
@@ -25,7 +28,7 @@ class CustomApi
         curl_setopt(
             $ch,
             CURLOPT_URL,
-            sprintf('%s/%s', $_ENV['API_URL'], $url)
+            sprintf('%s/%s', self::API_URL, $url)
         );
 
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, 0);
@@ -40,7 +43,7 @@ class CustomApi
             CURLOPT_HTTPHEADER,
             [
                 'Content-Type: application/json',
-                sprintf('X-Auth-App-Key: %s', $_ENV['API_KEY']),
+                sprintf('X-Auth-App-Key: %s', self::API_KEY),
             ]
         );
 
