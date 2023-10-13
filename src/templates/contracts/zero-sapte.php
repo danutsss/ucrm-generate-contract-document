@@ -345,10 +345,8 @@ $client['registrationDate'] = $client['registrationDate']->format('d-m-Y');
                         <?php foreach ($services as $service) : ?>
                             <?php if (
                                 $service['servicePlanId'] == 1 ||
-                                $service['servicePlanId'] == 4 ||
                                 $service['servicePlanId'] == 6 ||
                                 $service['servicePlanId'] == 7 ||
-                                $service['servicePlanId'] == 23 ||
                                 $service['servicePlanId'] == 24 ||
                                 $service['servicePlanId'] == 25 ||
                                 $service['servicePlanId'] == 32
@@ -367,6 +365,24 @@ $client['registrationDate'] = $client['registrationDate']->format('d-m-Y');
                                     instalare in maxim 5 zile lucratoare
                                     <br />
                                     <br />
+                                </p>
+                            <?php endif; ?>
+
+                            <?php if ($service['servicePlanId'] == 4 || $service['servicePlanId'] == 23) : ?>
+                                <p class="center">
+                                    <strong><?= $service['servicePlanName'] ?> - <?= $service['servicePlanPrice'] ?> RON / luna</strong>
+                                    <br />
+                                    Internet EXTRA 50 RON + TV EXTRA 75 RON.
+                                    <br />
+                                    Viteza de 1000Mbps & 220 canale digitale / 50+ canale HD
+                                    <br />
+                                    extraoptiuni incluse: Filme + Sport + International
+                                    <br />
+                                    Chirie receiver digital - 5 RON / luna
+                                    <br />
+                                    Router WIFI in custodie pe durata contractului
+                                    <br />
+
                                 </p>
                             <?php endif; ?>
 
@@ -408,7 +424,7 @@ $client['registrationDate'] = $client['registrationDate']->format('d-m-Y');
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <p class="center">Perioada contractuala este de <strong>minim 12 de luni</strong></center>
+                        <p class="center">Perioada contractuala este de <strong>minim 24 de luni</strong></center>
                     </td>
                 </tr>
             </tbody>
